@@ -126,13 +126,13 @@ Not only did the combination method show the greatest average revenue values, bu
 
 Following this trail of thought, the average revenue generated per week could be proposed as a viable business metric to track by the sales team, as shown below in figure 5. Where the goal for the Sales team would be to push for higher volume of items per order (larger nb_sold). Following on from the 6-week testing window, the revenue value to beat appears to be 152.91.
 
-[Average revenue per week](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/14.%20Average%20revenue%20by%20week.txt).
+> [Average revenue per week](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/14.%20Average%20revenue%20by%20week.txt).
 
 ![Figure 5](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%205.%20Average%20Revenue%20Generated%20per%20Order%2C%20per%20Week.png)
 
 Another possible metric to track could be the total revenue made per week, as shown in figure 6 below. Where the aim for the Sales department would be to sell as many products within a week as possible. In which, the 6-week testing window closed on a value of 187775.38, meaning that this would be the metric to overcome.
 
-[Lineplot of total revenue per week code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/15.%20Lineplot%20of%20average%20revenue%20by%20week.txt).
+> [Lineplot of total revenue per week code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/15.%20Lineplot%20of%20average%20revenue%20by%20week.txt).
 
 ![Figure 6](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%206.%20Total%20Revenue%20per%20Week.png)
 
