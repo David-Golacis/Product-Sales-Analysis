@@ -1,0 +1,11 @@
+# Importing the necessary extensions
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Reading the initial product_sales.csv as a DataFrame:  df
+# Found null strings under revenue, which weren't picked up by default, so I've specified to identify them in my initial read
+df = pd.read_csv('product_sales.csv', na_values='NULL')
+
+df
