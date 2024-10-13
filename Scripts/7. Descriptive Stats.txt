@@ -1,0 +1,35 @@
+# Average of all revenue, partitioned by sales_method
+avg_revenue_sales = df.groupby('sales_method')['revenue'].agg(['count', 'median', 'mean', 'std', 'sum'])
+avg_revenue_sales = avg_revenue_sales.reset_index()
+
+# Extracting STDs
+email_call_std = avg_revenue_sales['std'][2]
+email_std = avg_revenue_sales['std'][1]
+call_std = avg_revenue_sales['std'][0]
+
+# Differences in STDs
+email_call_by_email_std = round((email_call_std / email_std), 2)
+email_call_by_call_std = round((email_call_std / call_std), 2)
+
+print(f'The STD in Email + Call method was bigger than Email-only by {email_call_by_email_std}, while it was bigger than Call-only by {email_call_by_call_std}.')
+
+# Extracting means
+email_call_mean = avg_revenue_sales['mean'][2]
+email_mean = avg_revenue_sales['mean'][1]
+call_mean = avg_revenue_sales['mean'][0]
+
+# Differences in means
+email_call_by_email_mean = round((email_call_mean / email_mean), 2)
+email_call_by_call_mean = round((email_call_mean / call_mean), 2)
+
+print(f'The mean in Email + Call method was bigger than Email-only by {email_call_by_email_mean}, while it was bigger than Call-only by {email_call_by_call_mean}.')
+
+# Ratio column for summary table
+avg_revenue_sales['ratio'] = (avg_revenue_sales['count'] / (avg_revenue_sales['count'][0] + avg_revenue_sales['count'][1] + avg_revenue_sales['count'][2])) * 100
+
+# Rounding values for final table
+avg_revenue_sales['median'] = avg_revenue_sales['median'].astype(float).round(2)
+avg_revenue_sales['mean'] = avg_revenue_sales['mean'].astype(float).round(2)
+avg_revenue_sales['std'] = avg_revenue_sales['std'].astype(float).round(2)
+avg_revenue_sales['sum'] = avg_revenue_sales['sum'].astype(float).round(2)
+avg_revenue_sales['ratio'] = avg_revenue_sales['ratio'].astype(float).round(2)

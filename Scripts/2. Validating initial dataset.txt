@@ -1,0 +1,27 @@
+# Information about the dataset
+print(df.isna().sum().sort_values())
+print('')
+print(df.dtypes)
+print('')
+print(df.memory_usage())
+print('')
+print(df.describe())
+print('')
+print(df.shape)
+print('')
+
+# Checking data for outliers
+df.sort_values('years_as_customer')
+present_year = 2024
+company_formed = 1984
+customers_years_range = present_year - company_formed
+outliers = df.loc[df['years_as_customer'] >= customers_years_range]
+print(outliers)
+print('')
+
+# Loop to extract all unique values from each column in df
+for column in df.columns:
+    unique_values = df[column].sort_values(ascending=True).unique()
+    length = len(unique_values)
+    print(f'There were {length} unique values in {column}: {unique_values}')
+    print('')

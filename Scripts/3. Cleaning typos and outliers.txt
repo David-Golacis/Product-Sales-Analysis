@@ -1,0 +1,9 @@
+# Standardizing the sales_method column
+df['sales_method'] = df['sales_method'].str.upper()
+df['sales_method'] = df['sales_method'].str.replace('EMAIL', 'EM')  # Couldn't replace 'Em + call' to 'Email + call'
+df['sales_method'] = df['sales_method'].str.replace('EM', 'EMAIL')  # This worked
+df['sales_method'] = df['sales_method'].str.title()
+
+# Amending outliers to the maximum value
+df['years_as_customer'] = df['years_as_customer'].replace(63, 40)
+df['years_as_customer'] = df['years_as_customer'].replace(47, 40)

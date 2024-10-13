@@ -1,0 +1,6 @@
+# Filling in nulls with the average revenue per week, by state
+df['revenue'] = df['revenue'].fillna(df.groupby(['week', 'nb_sold'])['revenue'].transform('mean'))
+df['revenue'] = df['revenue'].round(2)
+df = df.sort_values(['week', 'sales_method', 'nb_sold', 'years_as_customer', 'nb_site_visits', 'state'])
+df = df.reset_index().drop('index', axis=1)
+df

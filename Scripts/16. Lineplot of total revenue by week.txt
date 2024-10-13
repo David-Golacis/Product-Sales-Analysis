@@ -1,0 +1,8 @@
+# Lineplot of the total revenue by week
+with sns.axes_style("whitegrid"):
+    weekly_revenue_lineplot = sns.relplot(data=weekly_revenue, kind='line', x='week', y='sum', 
+                                          marker='P', clip_on=False)
+    weekly_revenue_lineplot.fig.suptitle("Figure 6. Total Revenue per Week", y=1.04)
+    weekly_revenue_lineplot.set(ylim=(180000, 300000), yticks=np.linspace(180000, 300000, 13),
+                                xlim=(1, 6))
+    weekly_revenue_lineplot.set_axis_labels("Week", "Revenue")
