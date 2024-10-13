@@ -12,8 +12,22 @@ First, the product sales dataset was inspected using Excel, as the data was made
 
 Next, the CSV was imported into Python to clean, transform, and analyse the data. This was achieved using Pandas' read_csv function, where missing values were explicitly stated as 'NULL', because the alternative label of NA did not the produce desired results. The raw data has been shown below as table 1.
 
+> [Link to the code leading to Table 1](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/1.%20Leading%20to%20table%201.txt).
+
 **Table 1.** Raw product sales data.
 
+|    | week | sales_method | customer_id                          | nb_sold | revenue | years_as_customer | nb_site_visits | state         |
+|----|------|--------------|--------------------------------------|---------|---------|-------------------|----------------|---------------|
+| 1  | 2    | Email        | 2e72d641-95ac-497b-bbf8-4861764a7097 | 10      | null    | 0                 | 24             | Arizona       |
+| 2  | 6    | Email + Call | 3998a98d-70f5-44f7-942e-789bb8ad2fe7 | 15      | 225.47  | 1                 | 28             | Kansas        |
+| 3  | 5    | Call         | d1de9884-8059-4065-b10f-86eef57e4a44 | 11      | 52.55   | 6                 | 26             | Wisconsin     |
+| 4  | 4    | Email        | 78aa75a4-ffeb-4817-b1d0-2f030783c5d7 | 11      | null    | 3                 | 25             | Indiana       |
+| 5  | 3    | Email        | 10e6d446-10a5-42e5-8210-1b5438f70922 | 9       | 90.49   | 0                 | 28             | Illinois      |
+| 6  | 6    | Call         | 6489e678-40f2-4fed-a48e-d0dff9c09205 | 13      | 65.01   | 10                | 24             | Mississippi   |
+| 7  | 4    | Email        | eb6bd5f1-f115-4e4b-80a6-5e67fcfbfb94 | 11      | 113.38  | 9                 | 28             | Georgia       |
+| 8  | 1    | Email        | 047df079-071b-4380-9012-2bfe9bce45d5 | 10      | 99.94   | 1                 | 22             | Oklahoma      |
+| 9  | 5    | Email        | 771586bd-7b64-40be-87df-afe884d2af9e | 11      | 108.34  | 10                | 31             | Massachusetts |
+| 10 | 5    | Call         | 56491dae-bbe7-49f0-a651-b823a01103d8 | 11      | 53.82   | 7                 | 23             | Missouri      |
 
 After a deeper dive into the data, the following list of amendments were made for each column:
 
