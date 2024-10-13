@@ -1,5 +1,4 @@
-# Product Sales Analysis
-## Analysis of the Effectiveness of Three Different Sales Methods to Sell New Products
+# Analysis of the Effectiveness of Three Different Sales Methods to Sell New Products
 
 ## 1. Introduction
 
@@ -12,22 +11,17 @@ First, the product sales dataset was inspected using Excel, as the data was made
 
 Next, the CSV was imported into Python to clean, transform, and analyse the data. This was achieved using Pandas' read_csv function, where missing values were explicitly stated as 'NULL', because the alternative label of NA did not the produce desired results. The raw data has been shown below as table 1.
 
-> [Link to the code leading to Table 1](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/1.%20Leading%20to%20table%201.txt).
+> [Loading libraries and initialising data code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/01.%20Importing%20libraries%20and%20dataset.txt).
 
 **Table 1.** Raw product sales data.
 
-|    | week | sales_method | customer_id                          | nb_sold | revenue | years_as_customer | nb_site_visits | state         |
-|----|------|--------------|--------------------------------------|---------|---------|-------------------|----------------|---------------|
-| 1  | 2    | Email        | 2e72d641-95ac-497b-bbf8-4861764a7097 | 10      | null    | 0                 | 24             | Arizona       |
-| 2  | 6    | Email + Call | 3998a98d-70f5-44f7-942e-789bb8ad2fe7 | 15      | 225.47  | 1                 | 28             | Kansas        |
-| 3  | 5    | Call         | d1de9884-8059-4065-b10f-86eef57e4a44 | 11      | 52.55   | 6                 | 26             | Wisconsin     |
-| 4  | 4    | Email        | 78aa75a4-ffeb-4817-b1d0-2f030783c5d7 | 11      | null    | 3                 | 25             | Indiana       |
-| 5  | 3    | Email        | 10e6d446-10a5-42e5-8210-1b5438f70922 | 9       | 90.49   | 0                 | 28             | Illinois      |
-| 6  | 6    | Call         | 6489e678-40f2-4fed-a48e-d0dff9c09205 | 13      | 65.01   | 10                | 24             | Mississippi   |
-| 7  | 4    | Email        | eb6bd5f1-f115-4e4b-80a6-5e67fcfbfb94 | 11      | 113.38  | 9                 | 28             | Georgia       |
-| 8  | 1    | Email        | 047df079-071b-4380-9012-2bfe9bce45d5 | 10      | 99.94   | 1                 | 22             | Oklahoma      |
-| 9  | 5    | Email        | 771586bd-7b64-40be-87df-afe884d2af9e | 11      | 108.34  | 10                | 31             | Massachusetts |
-| 10 | 5    | Call         | 56491dae-bbe7-49f0-a651-b823a01103d8 | 11      | 53.82   | 7                 | 23             | Missouri      |
+|   | week | sales_method | customer_id                          | nb_sold | revenue | years_as_customer | nb_site_visits | state     |
+|---|------|--------------|--------------------------------------|---------|---------|-------------------|----------------|-----------|
+| 0 | 2    | Email        | 2e72d641-95ac-497b-bbf8-4861764a7097 | 10      | null    | 0                 | 24             | Arizona   |
+| 1 | 6    | Email + Call | 3998a98d-70f5-44f7-942e-789bb8ad2fe7 | 15      | 225.47  | 1                 | 28             | Kansas    |
+| 2 | 5    | Call         | d1de9884-8059-4065-b10f-86eef57e4a44 | 11      | 52.55   | 6                 | 26             | Wisconsin |
+| 3 | 4    | Email        | 78aa75a4-ffeb-4817-b1d0-2f030783c5d7 | 11      | null    | 3                 | 25             | Indiana   |
+| 4 | 3    | Email        | 10e6d446-10a5-42e5-8210-1b5438f70922 | 9       | 90.49   | 0                 | 28             | Illinois  |
 
 After a deeper dive into the data, the following list of amendments were made for each column:
 
@@ -46,24 +40,54 @@ For the missing revenue values, it was thought that the possibility of results b
 
 Lastly, the data was re-validated to confirm whether the data cleaning and other pre-processing techniques had successfully been applied. The validated table has been shown below as table 2.
 
+> [Validating raw data code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/02.%20Validating%20initial%20dataset.txt).
+
+> [Cleaning typos and outliers code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/03.%20Cleaning%20typos%20and%20outliers.txt).
+
+> [Converting data types code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/04.%20Converting%20categories.txt).
+
+> [Filling null values code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/05.%20Filling%20missing%20data%20with%20grouped%20averages.txt).
+
+> [Re-validating data code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/06.%20Re-validating%20data.txt).
+
 **Table 2.** Validated product sales dataset.
 
+|   | week | sales_method | customer_id                          | nb_sold | revenue | years_as_customer | nb_site_visits | state      |
+|---|------|--------------|--------------------------------------|---------|---------|-------------------|----------------|------------|
+| 0 | 1    | Call         | 45667c36-034f-4020-8285-37f0629f1705 | 7       | 35.25   | 0                 | 18             | Hawaii     |
+| 1 | 1    | Call         | b4dcc8e0-55d5-4ca0-91c7-59340436b366 | 7       | 34.74   | 0                 | 19             | Illinois   |
+| 2 | 1    | Call         | b4432010-d395-4359-926a-fc0050ae6962 | 7       | 33.62   | 0                 | 19             | Maine      |
+| 3 | 1    | Call         | f906042d-c9ed-43ca-ba37-a75399af0bf6 | 7       | 35.49   | 0                 | 19             | New Jersey |
+| 4 | 1    | Call         | fa5f6242-de6a-4fd4-bb26-2eb434949f89 | 7       | 35.85   | 0                 | 19             | Ohio       |
 
 ## 3. Results
 ### Descriptive univariate analysis
 
 First, exploratory analysis of each of the individual sales methods was performed and displayed in table 3 below. Where, the count, median, mean, STD, sum, and the percentage of total sales (presented in the ratio column) for each strategy was calculated.
 
+> [Descriptive summary of sales methods code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/07.%20Descriptive%20Stats.txt).
+
 **Table 3.** Summary of the descriptive results obtained from the sales methods.
 
-
+|   | sales_method | count | median | mean   | std   | sum      | ratio | state    |
+|---|--------------|-------|--------|--------|-------|----------|-------|----------|
+| 0 | Call         | 4962  | 49.58  | 48.14  | 9.68  | 238871.4 | 33.08 | Hawaii   |
+| 1 | Email        | 7466  | 95.3   | 96.83  | 11.98 | 722915.5 | 49.77 | Illinois |
+| 2 | Email + Call | 2572  | 184.4  | 182.56 | 31.25 | 469546.1 | 17.15 | Maine    |
 
 Overall, emails produced the highest gross revenue at 723,000, with the next highest sum coming from email & calls at 470,000, and lastly calls raked in a total of 239,000. An argument to explain the greater productivity in terms of revenue of emails could be that they had the lowest barrier to entry, while calls required more technical abilities in human relations from the individual sales representatives.
 
 The modal sales method employed was the email-only approach which accounted for a total of 7466 (49.77%) observations, the second most common was calls at 4962 (33.08%), and third was email & calls at 2572 (17.15%). Figure 1 below visualises the absolute differences between the three sales methods, where it was made apparent that the Sales team over-represented the email strategy. Interstingly, the pattern of sums of revenue produced by each method did not match the pattern of counts, with calls receiving the 2nd highest priority, while generating the lowest revenue.
 
+> [Barchart of total orders per sales method code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/08.%20Number%20of%20customers%20per%20method.txt).
+
+![Figure 1](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%201.%20Number%20of%20Customers%20per%20Sales%20Method.png)
 
 Next, the distribution of the total population was visualised using a histogram, shown below as figure 2. To aid in visualising patterns, a kernal density estimate line has been superimposed over the distribution. The bins chosen to fit the data followed the Freedman–Diaconis rule, which took into account the interquartile range (IQR) of revenues. One can now observe that the product sales data did not follow a symmetric, normal distribution, and could argue that the data was right-skewed. The data was polymodal, giving an illusion of revenue falling into bins by spiking at each 25th interval.
+
+> [Histogram of revenue](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/09.%20Histogram%20of%20revenue.txt).
+
+![Figure 2](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%202.%20Distribution%20of%20Revenue.png)
 
 However, by peering into table 3, similar values were observed for both the median and the mean for the individual sales tactics. This indicated that by grouping the data by sales method, more representative qualitative measures could be identified. With this in mind, the email & call observations experienced the greatest variance, being almost 2.61 times more spread out than the next highest, the email-only approach, and 3.23 times bigger than call-only method, when comparing STDs.
 
@@ -71,17 +95,46 @@ Then, the average revenue from each sales method was used to describe the qualit
 
 To support the above statements, boxplots of the individual sales methods were constructed and shown below in figure 3. These visualised the range and distribution of the overall revenue by each sales strategy. Where, one can now observe that although the email & call method had the most variability, it also had the least number of outliers of the 3 methods tested, with the email approach having the most. Since the notches within these boxplots did not overlap, one can conclude that with 95 percent confidence that the true medians did differ from one group to another. Additionally, the skew of the data was confirmed to not be present, as indicated by the distances between the red median line and the black plus of the mean inside the segmented IQRs, due to the distances between these measures being low.
 
+> [Boxplot of average revenue per sales method code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/10.%20Boxplot%20of%20sales%20methods.txt).
+
+![Figure 3](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%203.%20Average%20Revenue%20Generated%20by%20Sales%20Methods.png)
+
 
 ### Descriptive time-series analysis
 
 The sales method effectiveness was further assessed by seeing their effects over time, by splitting the results by the week number, in a chronological order, as made evident in table 4 below. This time, the STD for all combinations of sales methods was low, with only 1 result exceeding an STD of 15 (week 2 of combination method.) This means that the revenues were now better representated. A recurring pattern once again emerged with the email & call approach generating the greatest average revenue week after week, followed by emails, and then calls. With the only caveat being that email & call method expressed the greatest variability per week by consistently forming the greatest STD of the 3 groups available.
 
+> [Time series analysis code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/11.%20Time%20series%20analysis.txt).
+
+**Table 4.** Summary of the descriptive results obtained from the sales methods, partitioned by week number.
+
+|   | week | sales_method | count | median | mean   | std   | sum      | ratio |
+|---|------|--------------|-------|--------|--------|-------|----------|-------|
+| 0 | 1    | Call         | 758   | 35.15  | 35.41  | 2.17  | 26838.14 | 20.37 |
+| 1 | 1    | Email        | 2815  | 86.65  | 87.56  | 4.88  | 246486.5 | 75.65 |
+| 2 | 1    | Email + Call | 148   | 128.14 | 124.25 | 13.27 | 18388.76 | 3.98  |
+| 3 | 2    | Call         | 805   | 43.5   | 43.91  | 2.93  | 35351.13 | 32.32 |
+| 4 | 2    | Email        | 1486  | 99.59  | 100.29 | 6.17  | 149036.8 | 59.65 |
+
 Not only did the combination method show the greatest average revenue values, but this method also exhibitted the greatest absolute difference of the 3 methods. The difference in average revenue from weeks 1 to 6 for email & calls was 103.38 (growth rate of 83.20%), while for emails it was 39.58 (45.20%), and for calls it was 31.61 (89.27%). This has been shown in figure 4 below. By inspecting the angle of the slopes between the weeks, one can deduce that the email & call strategy saw the most increase in revenue, while the call method saw relatively little improvement on those terms, as the trend line for calls was less steep overall.
+
+> [Lineplot of revenue of sales methods by week code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/12.%20Lineplot%20of%20sales%20methods.txt).
+
+![Figure 4](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%204.%20Average%20Revenue%20Generated%20by%20Sales%20Methods%20per%20Week.png)
+
+> [Quantifying differences over time code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/13.%20Quantifying%20differences%20over%20time.txt).
 
 Following this trail of thought, the average revenue generated per week could be proposed as a viable business metric to track by the sales team, as shown below in figure 5. Where the goal for the Sales team would be to push for higher volume of items per order (larger nb_sold). Following on from the 6-week testing window, the revenue value to beat appears to be 152.91.
 
+[Average revenue per week](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/14.%20Average%20revenue%20by%20week.txt).
+
+![Figure 5](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%205.%20Average%20Revenue%20Generated%20per%20Order%2C%20per%20Week.png)
+
 Another possible metric to track could be the total revenue made per week, as shown in figure 6 below. Where the aim for the Sales department would be to sell as many products within a week as possible. In which, the 6-week testing window closed on a value of 187775.38, meaning that this would be the metric to overcome.
 
+[Lineplot of total revenue per week code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/15.%20Lineplot%20of%20average%20revenue%20by%20week.txt).
+
+![Figure 6](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%206.%20Total%20Revenue%20per%20Week.png)
 
 ## 4. Conclusion
 
