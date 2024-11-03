@@ -1,0 +1,13 @@
+# Histogram of revenue
+with sns.axes_style("whitegrid"):
+    revenue_histplot = sns.displot(data=df, kind='hist', x='revenue', kde=True)
+    
+    # Title
+    revenue_histplot.fig.suptitle("Figure 2. Distribution of Revenue", y=1.04)
+    
+    # Tick markers
+    revenue_histplot.set(xlim=(25, 250), xticks=np.linspace(25, 250, 10),
+                                            ylim=(0, 1700), yticks=np.linspace(0, 1800, 10))
+    
+    # Axes labels
+    revenue_histplot.set_axis_labels('Revenue', 'Count')

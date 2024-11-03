@@ -1,0 +1,4 @@
+# Calculating the average WoW growth
+avg_wow_growth = weekly_revenue['wow_growth'].mean().round(2)
+
+print(f'Average week-over-week growth of revenue for Calls was {avg_wow_growth}%.')

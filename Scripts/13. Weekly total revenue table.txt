@@ -1,0 +1,67 @@
+# Average of all revenue, partitioned by week
+weekly_revenue = df.groupby('week')['revenue'].agg(['count', 'median', 'mean', 'std', 'sum'])
+
+weekly_revenue = weekly_revenue.reset_index().sort_values('week')
+
+# Average week-over-week change
+# List comprehension loop - lists
+starting_week = min(weekly_revenue['week'])
+previous_week = min(weekly_revenue['week']) -1
+final_week = max(weekly_revenue['week'])
+
+# Store the results from the loop
+results_dict = {'week': [],
+                'wow_growth': []
+               }
+
+# List comprehension loop - loops
+# While loop to get to the max week number
+while starting_week <= final_week:
+    
+    # While loop to prevent a crash while the week number is 0
+    while previous_week < 1:
+        results_dict['week'].append(starting_week)
+        results_dict['wow_growth'].append(np.nan)
+        previous_week += 1
+        starting_week += 1
+
+    # Selecting the mean value at the week number of the starting week variable
+    starting_week_mean = weekly_revenue.loc[(weekly_revenue['week'] == starting_week)]['mean']
+        
+    # Converting series object to list object
+    starting_week_mean = current_week_mean.to_list()[0]
+        
+    # Finding the mean value at the week number of the previous week variable
+    previous_week_mean = weekly_revenue.loc[(weekly_revenue['week'] == previous_week)]['mean']
+        
+    previous_week_value = previous_week_mean.to_list()[0]
+        
+    # week-over-week growth calculation
+    wow_growth = (starting_week_mean / previous_week_value) -1
+        
+    # Appending the results to the dictionary
+    results_dict['week'].append(starting_week)
+    results_dict['wow_growth'].append(wow_growth)
+        
+    # Moving to the next while loop
+    starting_week += 1
+    previous_week += 1
+    
+# Reseting week numbers for the next item in the sales method list
+starting_week = min(weekly_revenue['week'])
+previous_week = min(weekly_revenue['week']) -1
+
+# Converting dictionary to dataframe
+res = pd.DataFrame(data=results_dict)
+
+# Copying the wow_growth results to the final table 
+weekly_revenue['wow_growth'] = res['wow_growth']
+
+# Rounding the values for report
+weekly_revenue['median'] = weekly_revenue['median'].astype(float).round(2)
+weekly_revenue['mean'] = weekly_revenue['mean'].astype(float).round(2)
+weekly_revenue['std'] = weekly_revenue['std'].astype(float).round(2)
+weekly_revenue['sum'] = weekly_revenue['sum'].astype(float).round(2)
+weekly_revenue['wow_growth'] = weekly_revenue['wow_growth'].astype(float).round(2)
+
+weekly_revenue

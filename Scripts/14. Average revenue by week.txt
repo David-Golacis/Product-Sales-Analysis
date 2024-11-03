@@ -1,9 +1,0 @@
-# Average of all revenue, partitioned by week
-weekly_revenue = df.groupby('week')['revenue'].agg(['count', 'median', 'mean', 'std', 'sum'])
-weekly_revenue = weekly_revenue.reset_index().sort_values('week')
-
-# Rounding the values for report
-weekly_revenue['median'] = weekly_revenue['median'].astype(float).round(2)
-weekly_revenue['mean'] = weekly_revenue['mean'].astype(float).round(2)
-weekly_revenue['std'] = weekly_revenue['std'].astype(float).round(2)
-weekly_revenue['sum'] = weekly_revenue['sum'].astype(float).round(2)

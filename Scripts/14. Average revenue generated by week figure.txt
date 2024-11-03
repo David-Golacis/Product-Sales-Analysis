@@ -1,0 +1,14 @@
+# Lineplot of the average revenue per week
+with sns.axes_style("whitegrid"):
+    weekly_revenue_mean_lineplot = sns.relplot(data=weekly_revenue, kind='line', x='week', y='mean', 
+                                          marker='P', clip_on=False)
+    
+    # Title
+    weekly_revenue_mean_lineplot.fig.suptitle("Figure 5. Average Revenue Generated per Week", y=1.04)
+    
+    # X ticks
+    weekly_revenue_mean_lineplot.set(ylim=(75, 155), yticks=np.linspace(75, 155, 9),
+                                xlim=(1, 6))
+    
+    # Axes labels
+    weekly_revenue_mean_lineplot.set_axis_labels("Week", "Average Revenue")

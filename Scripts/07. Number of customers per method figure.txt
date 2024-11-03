@@ -1,9 +1,12 @@
 # Boxplot of counts of each sales methods
 with sns.axes_style("whitegrid"):
     methods_barchart = sns.catplot(data=avg_revenue_sales, kind='bar', x='sales_method', y='count')
+    
     # Title
     methods_barchart.fig.suptitle("Figure 1. Number of Customers per Sales Method", y=1.04)
-    # X ticks and labels
+    
+    # Tick markers
     methods_barchart.set(ylim=(0, 7500), yticks=np.linspace(0, 7500, 16))
+    
     # Axes labels
     methods_barchart.set_axis_labels('Sales Method', 'Count')

@@ -1,0 +1,15 @@
+# Average of all revenue, partitioned by week and call
+avg_revenue_weekly_sales = df.groupby(['week', 'sales_method'])['revenue'].agg(['count', 'median', 'mean', 'std', 'sum'])
+avg_revenue_weekly_sales = avg_revenue_weekly_sales.reset_index().sort_values(['week', 'sales_method'])
+
+# Weekly ratios of each sales methods
+avg_revenue_weekly_sales['ratio'] = (avg_revenue_weekly_sales['count'] / avg_revenue_weekly_sales.groupby('week')['count'].transform('sum')) * 100
+
+# Rounding the values for the report
+avg_revenue_weekly_sales['median'] = avg_revenue_weekly_sales['median'].astype(float).round(2)
+avg_revenue_weekly_sales['mean'] = avg_revenue_weekly_sales['mean'].astype(float).round(2)
+avg_revenue_weekly_sales['std'] = avg_revenue_weekly_sales['std'].astype(float).round(2)
+avg_revenue_weekly_sales['sum'] = avg_revenue_weekly_sales['sum'].astype(float).round(2)
+avg_revenue_weekly_sales['ratio'] = avg_revenue_weekly_sales['ratio'].astype(float).round(2)
+
+avg_revenue_weekly_sales

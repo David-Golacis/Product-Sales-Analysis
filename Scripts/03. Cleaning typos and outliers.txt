@@ -1,9 +1,35 @@
 # Standardizing the sales_method column
 df['sales_method'] = df['sales_method'].str.upper()
-df['sales_method'] = df['sales_method'].str.replace('EMAIL', 'EM')  # Couldn't replace 'Em + call' to 'Email + call'
-df['sales_method'] = df['sales_method'].str.replace('EM', 'EMAIL')  # This worked
+df['sales_method'] = df['sales_method'].str.replace('EMAIL', 'EM')  # Couldn't directly replace 'Em + call' to 'Email + call'
+df['sales_method'] = df['sales_method'].str.replace('EM', 'EMAIL')  # This solution worked
 df['sales_method'] = df['sales_method'].str.title()
 
 # Amending outliers to the maximum value
 df['years_as_customer'] = df['years_as_customer'].replace(63, 40)
 df['years_as_customer'] = df['years_as_customer'].replace(47, 40)
+
+# Converting data types to save on memory usage
+# Lists of data types by column
+categories = ['state', 'sales_method']
+integers = ['nb_sold', 'week', 'years_as_customer', 'nb_site_visits']
+
+# List comprehension loop
+for types in df:
+    # Categories
+    for category in categories:
+        if types == category:
+            df[types] = df[types].astype('category')
+            
+    # Integers
+    for integer in integers:
+        if types == integer:
+            df[types] = df[types].astype('int8')
+
+# Re-validating results
+print(df.dtypes)
+print('')
+print(df.memory_usage())
+print('')
+print(df['sales_method'].unique())
+print('')
+print(df['years_as_customer'].max())
