@@ -101,7 +101,7 @@ Then, the average revenue from each sales method was used to describe the qualit
 
 To support the above statements, boxplots of the individual sales methods were constructed and shown below in Figure 3. These visualised the range and distribution of the overall revenue by each sales strategy. Where, one can now observe that although the email & call method had the most variability, it also had the least number of outliers of the 3 methods tested, with the email approach having the most. Since the notches within these boxplots did not overlap, one can conclude with 95% confidence that the true medians did differ from one group to another. Additionally, the skew of the data was confirmed to not be present, as indicated by the distances between the red median line and the black plus of the mean inside the segmented IQRs, due to the distances between these measures being low.
 
-> [Boxplot of average revenue per sales method code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/10.%20Boxplot%20of%20sales%20methods.txt).
+> [Boxplot of average revenue per sales method code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/09.%20Boxplot%20of%20sales%20methods%20figure.txt).
 
 ![Figure 3](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%203.%20Average%20Revenue%20Generated%20by%20Sales%20Methods.png)
 
@@ -110,7 +110,7 @@ To support the above statements, boxplots of the individual sales methods were c
 
 The sales method effectiveness was further assessed by seeing their effects over time, by splitting the results by the week number, in chronological order, as made evident in Table 4 below. This time, the STD for all combinations of sales methods was low, with only 1 result exceeding an STD of 15 (week 2 of the combination method.) This means that the revenues were now better represented. A recurring pattern once again emerged with the email & call approach generating the greatest average revenue week after week, followed by emails, and then calls. The only caveat is that the email & call method expressed the greatest variability per week by consistently forming the greatest STD of the 3 groups available.
 
-> [Time series analysis code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/11.%20Time%20series%20analysis.txt).
+> [Weekly sales per method table code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/10.%20Weekly%20sales%20per%20method%20table.txt).
 
 **Table 4.** Summary of the descriptive results obtained from the sales methods, partitioned by week number.
 
@@ -124,28 +124,33 @@ The sales method effectiveness was further assessed by seeing their effects over
 
 Not only did the combination method show the greatest average revenue values, but this method also exhibited the greatest absolute difference of the 3 methods. The difference in average revenue from weeks 1 to 6 for email & calls was 103.38 (growth rate of 83.20%), while for emails it was 39.58 (45.20%), and for calls, it was 31.61 (89.27%). This is shown in Figure 4 below. By inspecting the angle of the slopes between the weeks, one can deduce that the email & call strategy saw the most increase in revenue, while the call method saw relatively little improvement on those terms, as the trend line for calls was less steep overall.
 
-> [Lineplot of revenue of sales methods by week code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/12.%20Lineplot%20of%20sales%20methods.txt).
+> [Time series analysis code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/11.%20Time%20series%20analysis.txt).
+
+> [Lineplot of average revenue of sales methods per week code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/12.%20Lineplot%20of%20sales%20methods%20figure.txt).
 
 ![Figure 4](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%204.%20Average%20Revenue%20Generated%20by%20Sales%20Methods%20per%20Week.png)
 
-> [Quantifying differences over time code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/13.%20Quantifying%20differences%20over%20time.txt).
-
 Following this trail of thought, the average revenue (AOV) generated per week could be proposed as a viable business metric to track by the sales team, as shown below in Figure 5. Where the goal for the Sales team would be to push for a higher volume of items per order (larger nb_sold). Following on from the 6-week testing window, the revenue value to beat appears to be 152.91.
 
-> [Average revenue per week](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/14.%20Average%20revenue%20by%20week.txt).
+> [Weekly total revenue table code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/13.%20Weekly%20total%20revenue%20table.txt).
 
-![Figure 5](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%205.%20Average%20Revenue%20Generated%20per%20Order%2C%20per%20Week.png)
+> [Average revenue generated by week figure code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/14.%20Average%20revenue%20generated%20by%20week%20figure.txt).
+
+![Figure 5](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%205.%20Average%20Revenue%20Generated%20per%20Week.png)
 
 Another possible metric to track could be the total revenue made per week, as shown in Figure 6 below. Where the aim for the Sales department would be to sell as many products within a week as possible. Which, the 6-week testing window closed on a value of 187775.38, meaning that this would be the metric to overcome.
 
-> [Lineplot of total revenue per week code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/15.%20Lineplot%20of%20average%20revenue%20by%20week.txt).
+> [Lineplot of total revenue per week code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/15.%20Total%20revenue%20generated%20by%20week%20figure.txt).
 
 ![Figure 6](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%206.%20Total%20Revenue%20per%20Week.png)
 
 Lastly, the revenue could be monitored using the average week-over-week growth metric, which currently stands at 0.70% and would need to remain at a positive value to continue seeing an increase in revenue. The weekly changes are visualised below in Figure 7.
 
+> [Average WoW growth calculation code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/16.%20Average%20WoW%20growth%20calculation.txt).
 
+> [WoW growth figure code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/17.%20WoW%20growth%20figure.txt).
 
+![Figure 7](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%207.%20Week-over-Week%20Growth.png)
 
 ## Executive Summary
 
