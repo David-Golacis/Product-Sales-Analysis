@@ -7,8 +7,7 @@ with sns.axes_style("whitegrid"):
     weekly_revenue_wow_lineplot.fig.suptitle("Figure 7. Week-over-Week Growth", y=1.04)
     
     # X ticks
-    weekly_revenue_wow_lineplot.set(ylim=(0.35, 1.00), yticks=np.linspace(0.35, 1.00, 14),
-                                xlim=(2, 6), xticks=np.linspace(2, 6, 5))
+    weekly_revenue_wow_lineplot.set(ylim=(-0.1, 0.4), xlim=(2, 6), xticks=np.linspace(2, 6, 5))
     
     # Axes labels
     weekly_revenue_wow_lineplot.set_axis_labels("Week", "WoW Growth (%)")

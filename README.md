@@ -130,7 +130,9 @@ Not only did the combination method show the greatest average revenue values, bu
 
 ![Figure 4](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%204.%20Average%20Revenue%20Generated%20by%20Sales%20Methods%20per%20Week.png)
 
-The following summary table was produced to calculate which business metrics were viable ways to measure success. This is shown in table 5 below.
+### Business metrics
+
+The following summary table was produced to identify which business metrics were viable ways to measure success. This is shown in table 5 below.
 
 > [Weekly total revenue table code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/13.%20Weekly%20total%20revenue%20table.txt).
 
@@ -157,7 +159,7 @@ Another possible metric to track could be the total revenue made per week, as sh
 
 ![Figure 6](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%206.%20Total%20Revenue%20per%20Week.png)
 
-Lastly, the revenue could be monitored using the average week-over-week growth metric, which currently stands at 0.15% and would need to remain at a positive value to continue seeing an increase in revenue. The weekly changes are visualised below in Figure 7.
+Lastly, the revenue could be monitored using the average week-over-week growth metric, which currently stands at 0.15% and would need to remain at a positive value to continue seeing an increase in revenue. The weekly changes are visualised below in Figure 7, where it can be seen that, at the present, this criteria is being satisfied on week 6 at 0.39%.
 
 > [Average WoW growth calculation code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/16.%20Average%20WoW%20growth%20calculation.txt).
 
@@ -171,6 +173,6 @@ Taking into account the time constraints of calls compared to a mass-published e
 
 The Sales department can use the insight from this analysis to make an informed decision to continue to use the combination approach in their future marketing efforts, alongside an initial email-only campaign. It would be recommended to reduce the number of attempts of the call-only approach, as they produced the least total revenue, accounted for the smallest orders, and took up the most time from sales representatives.
 
-A possible metric to track would be the average revenue generated per unique customer ID. This would reduce the need to make as many sales to make an equal sum of revenue, relieving pressure from the sales team and saving the business on associated shipment and processing costs. The starting value to beat for this metric is 152.91. This could be paired alongside a weekly total revenue metric, which currently stands at 187775.38, and monitors the performance of the sale by measuring the current bottom line. Tracking WoW growth could be used to supplement these metrics by alerting the business of decreasing the momentum of the product line. 
+A possible metric to track would be the average revenue generated per unique customer ID. This would reduce the need to make as many sales to make an equal sum of revenue, relieving pressure from the sales team and saving the business on associated shipment and processing costs. The starting value to beat for this metric is 152.91. This could be paired alongside a weekly total revenue metric, which currently stands at 187775.38, and monitors the performance of the sale by measuring the current bottom line. Tracking the average WoW growth, which is presently 0.15%, could be used to supplement these metrics by alerting the business of decreasing the momentum of the product line. Where, the WoW growth finished on week 6 at 0.39%, satisfying the criteria.
 
 A proposed continuation study could be to quantify the success rate (measuring the number of unsuccessful attempts made) for each method. Where it is hypothesized that the call-only strategy would perform worse, and by contrast, the combination approach could gain further justification for its application. In other words, this addition would help determine how effective the sales pitches were.
