@@ -157,7 +157,7 @@ Another possible metric to track could be the total revenue made per week, as sh
 
 > [Lineplot of total revenue per week code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/15.%20Total%20revenue%20generated%20by%20week%20figure.txt).
 
-![Figure 6](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%206.%20Total%20Revenue%20per%20Week.png)
+![Figure 6](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Charts/Figure%206.%20Total%20Revenue%20Generated%20per%20Week.png)
 
 Lastly, the revenue could be monitored using the average week-over-week growth metric, which currently stands at 0.15% and would need to remain at a positive value to continue seeing an increase in revenue. The weekly changes are visualised below in Figure 7, where it can be seen that, at the present, this criteria is being satisfied on week 6 at 0.39%.
 
