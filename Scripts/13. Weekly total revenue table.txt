@@ -46,10 +46,6 @@ while starting_week <= final_week:
     # Moving to the next while loop
     starting_week += 1
     previous_week += 1
-    
-# Reseting week numbers for the next item in the sales method list
-starting_week = min(weekly_revenue['week'])
-previous_week = min(weekly_revenue['week']) -1
 
 # Converting dictionary to dataframe
 res = pd.DataFrame(data=results_dict)
