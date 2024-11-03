@@ -18,7 +18,7 @@ Next, the CSV was imported into Python to clean, transform, and analyse the data
 
 > [Loading libraries and initialising data code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/01.%20Importing%20libraries%20and%20dataset.txt).
 
-**Table 1.** Raw product sales data.
+**Table 1.** Truncated raw product sales data.
 
 |   | week | sales_method | customer_id                          | nb_sold | revenue | years_as_customer | nb_site_visits | state     |
 |---|------|--------------|--------------------------------------|---------|---------|-------------------|----------------|-----------|
@@ -55,7 +55,7 @@ Lastly, the data was re-validated to confirm whether the data cleaning and other
 
 > [Re-validating data code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/05.%20Re-validating%20data.txt).
 
-**Table 2.** Validated product sales dataset.
+**Table 2.** Truncated validated product sales dataset.
 
 |   | week | sales_method | customer_id                          | nb_sold | revenue | years_as_customer | nb_site_visits | state      |
 |---|------|--------------|--------------------------------------|---------|---------|-------------------|----------------|------------|
@@ -112,7 +112,7 @@ The sales method effectiveness was further assessed by seeing their effects over
 
 > [Weekly sales per method table code](https://github.com/David-Golacis/Product-Sales-Analysis/blob/main/Scripts/10.%20Weekly%20sales%20per%20method%20table.txt).
 
-**Table 4.** Summary of the descriptive results obtained from the sales methods, partitioned by week number.
+**Table 4.** Truncated summary of the descriptive results obtained from the sales methods, partitioned by week number.
 
 |   | week | sales_method | count | median | mean   | std   | sum       | ratio |
 |---|------|--------------|-------|--------|--------|-------|-----------|-------|
