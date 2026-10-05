@@ -7,7 +7,7 @@ Comparing customer revenue, sales volume, and weekly performance across Email, C
 
 The revision uses the original dataset. October 2026 is the revision date, not a new observation period.
 
-[Read the analysis notebook](1%20Notebook/notebook.ipynb) · [Browse figures and tables](2%20Outputs/) · [View business baselines](2%20Outputs/Table%2009%20Business%20Baselines.csv)
+[Read the analysis notebook](2%20Notebook/Notebook%201.ipynb) · [Browse figures and tables](3%20Reports/) · [View business baselines](3%20Reports/1%20Tables/Table%2009%20Business%20Baselines.csv)
 
 ## Business question
 
@@ -30,13 +30,37 @@ Revenue is expressed in the dataset's units; a currency has not been established
 - **Increasing average spending does not imply increasing total revenue.** Between weeks 5 and 6, overall estimated revenue falls 33.74% and customer count falls 52.29%, while observed mean revenue rises 38.25%.
 - **Missing revenue is material:** 1,074 records, or 7.16%, lack a recorded amount. The estimated campaign total is 1,435,834.33, comprising 1,308,138.01 recorded and 127,696.32 imputed.
 
-![Recorded revenue and totals including estimates for each sales method](2%20Outputs/Figure%2006%20Recorded%20and%20Estimated%20Revenue%20Totals%20by%20Sales%20Method.png)
+### Evidence behind the findings
 
-The gap between each pair of bars is the imputed addition. The two bars must not be added together.
+**Campaign revenue: recorded amounts and estimates**
 
-![Weekly estimated revenue totals for Email, Call, and Email plus Call](2%20Outputs/Figure%2009%20Weekly%20Estimated%20Total%20Revenue%20by%20Sales%20Method.png)
+![Recorded revenue and totals including estimates for each sales method](3%20Reports/0%20Figures/Figure%2006%20Recorded%20and%20Estimated%20Revenue%20Totals%20by%20Sales%20Method.png)
 
-Email leads estimated revenue in weeks 1–4; Email + Call leads in weeks 5–6. Changing customer volume and method mix limit explanations of these trends.
+Email has the largest total on both bases. The gap between each pair of bars is the imputed addition; the two bars must not be added together. Totals reflect customer volume as well as spending per customer.
+
+**Revenue completeness**
+
+![Percentage of customer records missing revenue within each sales method](3%20Reports/0%20Figures/Figure%2002%20Missing%20Revenue%20by%20Sales%20Method.png)
+
+Email + Call has the highest missing-revenue percentage, at 13.57%. Its observed distributions exclude those records, and its estimated total depends more heavily on replacing missing amounts. This supports prioritising source-data reconciliation.
+
+**Weekly customer volume**
+
+![Weekly customer counts by sales method](3%20Reports/0%20Figures/Figure%2007%20Weekly%20Customer%20Counts%20by%20Sales%20Method.png)
+
+Customer volume and method mix change during the campaign. Overall customer count falls from 3,721 in week 1 to 1,228 in week 6. These are different customer groups, so the lines do not track the same customers over time.
+
+**Weekly observed spending**
+
+![Weekly mean recorded revenue per customer by sales method](3%20Reports/0%20Figures/Figure%2008%20Weekly%20Mean%20Recorded%20Revenue%20by%20Sales%20Method.png)
+
+Email + Call has the highest observed mean in every week. All three methods show a decrease between weeks 2 and 3, so spending growth is not uninterrupted. These means exclude missing revenue and do not establish a causal method effect.
+
+**Weekly estimated totals**
+
+![Weekly estimated revenue totals for Email, Call, and Email plus Call](3%20Reports/0%20Figures/Figure%2009%20Weekly%20Estimated%20Total%20Revenue%20by%20Sales%20Method.png)
+
+Email leads estimated revenue in weeks 1–4; Email + Call leads in weeks 5–6. Comparing this chart with customer counts and observed means shows why increasing average spending can coincide with falling total revenue. Totals include estimates and have no quantified uncertainty intervals.
 
 ## Business recommendations
 
@@ -49,6 +73,25 @@ Email leads estimated revenue in weeks 1–4; Email + Call leads in weeks 5–6.
 
 The [source CSV](0%20Data/product_sales.csv) contains 15,000 customer records and eight fields: campaign week, sales method, customer identifier, quantity sold, revenue, customer tenure, website visits, and state. Customer identifiers are unique; weekly comparisons therefore involve different customer groups. The records do not establish an order-level denominator, so the report uses revenue per customer rather than average order value.
 
+### Data schema
+
+The source CSV has eight columns. The types below describe the corrected working dataset in the notebook; CSV files do not preserve pandas data types.
+
+| Column | Meaning | Working type | Validation and treatment |
+|---|---|---|---|
+| `week` | Campaign week | `int8` | Required whole number from 1 to 6 |
+| `sales_method` | Sales approach associated with the customer | `category` | Required; Email, Call, or Email + Call after spelling corrections |
+| `customer_id` | Customer identifier | Text identifier | Required, non-blank, and unique; not an order identifier |
+| `nb_sold` | Number of items sold in the customer record | `int8` | Required positive whole number; storage bounds checked before conversion |
+| `revenue` | Recorded customer revenue in unspecified currency units | `float64` | Non-negative and finite when present; 1,074 missing values retained |
+| `years_as_customer` | Customer tenure in years as of 2024 | Nullable `Int8` | Whole number from 0 to 40 when known; invalid values 47 and 63 set to missing |
+| `nb_site_visits` | Website visits associated with the customer record | `int8` | Required non-negative whole number; storage bounds checked before conversion |
+| `state` | US state | `category` | Required; validated against the 50 state names |
+
+`estimated_revenue` is a derived `float64` column, not a source field. It preserves every recorded amount and supplies group-based estimates only where `revenue` is missing. All 15,000 customer records are retained. The imported source values remain available in `raw_sales_data`.
+
+### Analytical workflow
+
 The notebook:
 
 1. Preserves the imported data and validates the schema, required values, identifiers, numeric bounds, and categories.
@@ -58,8 +101,6 @@ The notebook:
 5. Calculates observed distributions, estimated totals, weekly changes, and historical business baselines, with reconciliation checks before reporting.
 
 The missing-record-weighted mean absolute error is **1.643** and root mean squared error is **2.113** revenue units. All 1,074 final estimates use the exact three-variable grouping; one estimate has only three supporting recorded revenues.
-
-The original dataset provider and redistribution terms are not documented in the current project materials. The CSV is the analysis input; this repository should not be treated as evidence of its original provenance or reuse permissions.
 
 ## Limitations
 
@@ -75,26 +116,48 @@ Product-Sales-Analysis/
 ├── README.md
 ├── environment.yml
 ├── 0 Data/
-│   ├── product_sales.csv
-│   └── Product Sales Pivots.xlsx
-├── 1 Notebook/
-│   └── notebook.ipynb
-└── 2 Outputs/
-    ├── Figure 01 ... Figure 10 ... .png
-    └── Table 01 ... Table 09 ... .csv
+│   └── product_sales.csv
+├── 1 References/
+│   └── Supplementary Sales Pivots.xlsx
+├── 2 Notebook/
+│   └── Notebook 1.ipynb
+└── 3 Reports/
+    ├── 0 Figures/
+    │   └── Figure 01 ... Figure 10 ... .png
+    └── 1 Tables/
+        └── Table 01 ... Table 09 ... .csv
 ```
 
-The Python notebook is the reproducible analytical report. The Excel workbook is supplementary and is not required to execute the notebook. Generated outputs are recreated by the notebook; amend their generating code rather than editing exported results manually.
+The Python notebook is the reproducible analytical report. The [Excel workbook](1%20References/Supplementary%20Sales%20Pivots.xlsx) is supplementary and is not required to execute the notebook. Generated outputs are recreated by the notebook; amend their generating code rather than editing exported results manually.
+
+### Figure guide
+
+Five figures are embedded above to explain the main business findings. All ten remain part of the report and are available below; supporting figures are not discarded analyses.
+
+| Figure | Purpose | Presentation |
+|---|---|---|
+| [01: Customer counts](3%20Reports/0%20Figures/Figure%2001%20Number%20of%20Customers%20per%20Sales%20Method.png) | Shows campaign sample sizes and customer shares; the headline table already summarises the counts. | Linked; notebook |
+| [02: Missing revenue](3%20Reports/0%20Figures/Figure%2002%20Missing%20Revenue%20by%20Sales%20Method.png) | Shows unequal completeness and where reconciliation is most needed. | Embedded; notebook |
+| [03: Revenue histograms](3%20Reports/0%20Figures/Figure%2003%20Distribution%20of%20Recorded%20Customer%20Revenue%20by%20Sales%20Method.png) | Examines distribution shape using comparable bins and percentages. | Linked; notebook |
+| [04: Revenue boxplots](3%20Reports/0%20Figures/Figure%2004%20Distribution%20of%20Recorded%20Customer%20Revenue%20by%20Sales%20Method.png) | Compares medians, means, spread, and potential outliers; complements the histograms. | Linked; notebook |
+| [05: Revenue against quantity](3%20Reports/0%20Figures/Figure%2005%20Recorded%20Revenue%20Against%20Quantity%20Sold.png) | Examines an association supporting the estimation variables; does not establish a pricing mechanism. | Linked; notebook |
+| [06: Recorded and estimated totals](3%20Reports/0%20Figures/Figure%2006%20Recorded%20and%20Estimated%20Revenue%20Totals%20by%20Sales%20Method.png) | Compares campaign totals and the size of imputed additions. | Embedded; notebook |
+| [07: Weekly customer counts](3%20Reports/0%20Figures/Figure%2007%20Weekly%20Customer%20Counts%20by%20Sales%20Method.png) | Provides volume and method-mix context for revenue trends. | Embedded; notebook |
+| [08: Weekly observed mean revenue](3%20Reports/0%20Figures/Figure%2008%20Weekly%20Mean%20Recorded%20Revenue%20by%20Sales%20Method.png) | Shows spending among customers with recorded revenue. | Embedded; notebook |
+| [09: Weekly estimated totals](3%20Reports/0%20Figures/Figure%2009%20Weekly%20Estimated%20Total%20Revenue%20by%20Sales%20Method.png) | Shows revenue performance by campaign stage, including estimates. | Embedded; notebook |
+| [10: Week-over-week revenue growth](3%20Reports/0%20Figures/Figure%2010%20Week-over-Week%20Revenue%20Growth%20by%20Sales%20Method.png) | Quantifies relative changes in observed means and estimated totals; supports the level charts. | Linked; notebook |
+
+### Exported tables
 
 | Output | Purpose |
 |---|---|
-| [Table 01: Environment versions](2%20Outputs/Table%2001%20Environment%20Versions.csv) | Records the Python and principal package versions used |
-| [Tables 02–03: Prediction validation](2%20Outputs/Table%2002%20Validation%20by%20Method.csv) | Method-level errors and [overall validation scores](2%20Outputs/Table%2003%20Validation%20Scores.csv) |
-| [Table 04: Group-level estimation audit](2%20Outputs/Table%2004%20Group-Level%20Estimation%20Audit.csv) | Supporting observations, missing counts, and imputed amounts |
-| [Table 05: Method summary](2%20Outputs/Table%2005%20Average%20Revenue%20and%20Customer%20Statistics.csv) | Customer counts, observed statistics, and revenue totals |
-| [Tables 06–07: Weekly method results](2%20Outputs/Table%2006%20Weekly%20Sales%20Summary.csv) | Weekly statistics and [week 1–6 changes](2%20Outputs/Table%2007%20Week%201%E2%80%936%20Changes%20by%20Sales%20Method.csv) |
-| [Table 08: Weekly business metrics](2%20Outputs/Table%2008%20Weekly%20Business%20Metrics.csv) | Overall revenue, volume, spending, completeness, and growth |
-| [Table 09: Business baselines](2%20Outputs/Table%2009%20Business%20Baselines.csv) | 44 historical references, with their basis, period, and unit |
+| [Table 01: Environment versions](3%20Reports/1%20Tables/Table%2001%20Environment%20Versions.csv) | Records the Python and principal package versions used |
+| [Tables 02–03: Prediction validation](3%20Reports/1%20Tables/Table%2002%20Validation%20by%20Method.csv) | Method-level errors and [overall validation scores](3%20Reports/1%20Tables/Table%2003%20Validation%20Scores.csv) |
+| [Table 04: Group-level estimation audit](3%20Reports/1%20Tables/Table%2004%20Group-Level%20Estimation%20Audit.csv) | Supporting observations, missing counts, and imputed amounts |
+| [Table 05: Method summary](3%20Reports/1%20Tables/Table%2005%20Average%20Revenue%20and%20Customer%20Statistics.csv) | Customer counts, observed statistics, and revenue totals |
+| [Tables 06–07: Weekly method results](3%20Reports/1%20Tables/Table%2006%20Weekly%20Sales%20Summary.csv) | Weekly statistics and [week 1–6 changes](3%20Reports/1%20Tables/Table%2007%20Week%201%E2%80%936%20Changes%20by%20Sales%20Method.csv) |
+| [Table 08: Weekly business metrics](3%20Reports/1%20Tables/Table%2008%20Weekly%20Business%20Metrics.csv) | Overall revenue, volume, spending, completeness, and growth |
+| [Table 09: Business baselines](3%20Reports/1%20Tables/Table%2009%20Business%20Baselines.csv) | 44 historical references, with their basis, period, and unit |
 
 **Export conventions:** columns ending in `_fraction` contain fractions: `0.10` means 10%. Percentage columns contain percentage values: `10.0` means 10%. Business-baseline values use their accompanying `unit`. Undefined statistics and growth rates remain blank in CSV exports; they are not zero. Exports retain calculation precision.
 
@@ -118,11 +181,11 @@ The [Conda environment specification](environment.yml) records the dependencies 
    conda activate product-sales-check
    ```
 
-4. Open [the notebook](1%20Notebook/notebook.ipynb) in VS Code with notebook support, or in Jupyter. Select the newly created environment as the notebook kernel; activating a terminal environment alone does not change an already selected kernel.
-5. In the first code cell, change `project_root` to the absolute path of your local repository. Ensure the `2 Outputs` directory exists.
+4. Open [the notebook](2%20Notebook/Notebook%201.ipynb) in VS Code with notebook support, or in Jupyter. Select the newly created environment as the notebook kernel; activating a terminal environment alone does not change an already selected kernel.
+5. In the first code cell, change `project_root` to the absolute path of your local repository. Ensure both `3 Reports/0 Figures` and `3 Reports/1 Tables` exist.
 6. Restart the kernel and run every cell from top to bottom. Execution overwrites the generated figures and tables. Review any validation errors before using the results, then save the executed notebook.
 
-The notebook's **Software environment** section records the Python and principal package versions actually used during execution and exports them to [Table 01](2%20Outputs/Table%2001%20Environment%20Versions.csv). Keep this execution record alongside `environment.yml`: the YAML specifies installation dependencies, while the table documents the environment that produced the results.
+The notebook's **Software environment** section records the Python and principal package versions actually used during execution and exports them to [Table 01](3%20Reports/1%20Tables/Table%2001%20Environment%20Versions.csv). Keep this execution record alongside `environment.yml`: the YAML specifies installation dependencies, while the table documents the environment that produced the results.
 
 ## Revision history and contact
 
