@@ -1,0 +1,4 @@
+sales_method,customer_count,total_items_sold,mean_items_per_customer
+Call,4962,47187,9.509673518742442
+Email,7466,72639,9.729306188052504
+Email + Call,2572,31444,12.225505443234837
