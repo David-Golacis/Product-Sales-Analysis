@@ -1,2 +1,0 @@
-# Checking data for null values again
-print(df.isna().sum().value_counts())

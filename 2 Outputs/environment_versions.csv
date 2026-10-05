@@ -1,0 +1,6 @@
+Package,Version
+Python,3.13.13
+pandas,3.0.6
+NumPy,2.5.3
+Matplotlib,3.11.2
+Seaborn,0.13.2

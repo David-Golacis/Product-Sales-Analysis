@@ -1,0 +1,45 @@
+metric,sales_method,reference_period,basis,value,unit,status
+Revenue,All methods,Six-week campaign,Recorded,1308138.01,Revenue units,Historical reference; not a target
+Revenue,All methods,Six-week campaign,Imputed addition,127696.31729168294,Revenue units,Historical reference; not a target
+Revenue,All methods,Six-week campaign,Recorded plus estimated missing amounts,1435834.3272916828,Revenue units,Historical reference; not a target
+Revenue,All methods,Average campaign week,Recorded,218023.00166666668,Revenue units,Historical reference; not a target
+Revenue,All methods,Average campaign week,Imputed addition,21282.719548613823,Revenue units,Historical reference; not a target
+Revenue,All methods,Average campaign week,Recorded plus estimated missing amounts,239305.72121528047,Revenue units,Historical reference; not a target
+Revenue,All methods,Week 6,Recorded,163111.74,Revenue units,Historical reference; not a target
+Revenue,All methods,Week 6,Imputed addition,25080.28186343551,Revenue units,Historical reference; not a target
+Revenue,All methods,Week 6,Recorded plus estimated missing amounts,188192.0218634355,Revenue units,Historical reference; not a target
+Customer count,Call,Six-week campaign,All customer records,4962.0,Customers,Historical reference; not a target
+Customer count,Call,Average campaign week,All customer records,827.0,Customers,Historical reference; not a target
+Customer count,Call,Week 6,All customer records,448.0,Customers,Historical reference; not a target
+Customer count,Email,Six-week campaign,All customer records,7466.0,Customers,Historical reference; not a target
+Customer count,Email,Average campaign week,All customer records,1244.3333333333333,Customers,Historical reference; not a target
+Customer count,Email,Week 6,All customer records,197.0,Customers,Historical reference; not a target
+Customer count,Email + Call,Six-week campaign,All customer records,2572.0,Customers,Historical reference; not a target
+Customer count,Email + Call,Average campaign week,All customer records,428.6666666666667,Customers,Historical reference; not a target
+Customer count,Email + Call,Week 6,All customer records,583.0,Customers,Historical reference; not a target
+Customer count,All methods,Six-week campaign,All customer records,15000.0,Customers,Historical reference; not a target
+Customer count,All methods,Average campaign week,All customer records,2500.0,Customers,Historical reference; not a target
+Customer count,All methods,Week 6,All customer records,1228.0,Customers,Historical reference; not a target
+Mean revenue per customer,Call,Six-week pooled customers,Customers with recorded revenue,47.59746705710102,Revenue units per customer,Historical reference; not a target
+Mean revenue per customer,Call,Six-week pooled customers,All customers; includes estimated revenue,47.64137738179088,Revenue units per customer,Historical reference; not a target
+Mean revenue per customer,Email,Six-week pooled customers,Customers with recorded revenue,97.12768419531926,Revenue units per customer,Historical reference; not a target
+Mean revenue per customer,Email,Six-week pooled customers,All customers; includes estimated revenue,97.18394720211955,Revenue units per customer,Historical reference; not a target
+Mean revenue per customer,Email + Call,Six-week pooled customers,Customers with recorded revenue,183.651232568601,Revenue units per customer,Historical reference; not a target
+Mean revenue per customer,Email + Call,Six-week pooled customers,All customers; includes estimated revenue,184.23890470925818,Revenue units per customer,Historical reference; not a target
+Mean revenue per customer,All methods,Six-week pooled customers,Customers with recorded revenue,93.93494255349705,Revenue units per customer,Historical reference; not a target
+Mean revenue per customer,All methods,Six-week pooled customers,All customers; includes estimated revenue,95.72228848611219,Revenue units per customer,Historical reference; not a target
+Mean revenue per customer,All methods,Week 6,Customers with recorded revenue,148.8245802919708,Revenue units per customer,Historical reference; not a target
+Mean revenue per customer,All methods,Week 6,All customers; includes estimated revenue,153.25083213634812,Revenue units per customer,Historical reference; not a target
+Missing revenue,Call,Six-week campaign,Missing revenue records / all customer records,3.647722692462717,%,Historical reference; not a target
+Missing revenue,Email,Six-week campaign,Missing revenue records / all customer records,7.286364854004821,%,Historical reference; not a target
+Missing revenue,Email + Call,Six-week campaign,Missing revenue records / all customer records,13.569206842923794,%,Historical reference; not a target
+Missing revenue,All methods,Six-week campaign,Missing revenue records / all customer records,7.16,%,Historical reference; not a target
+Missing revenue,All methods,Week 6,Missing revenue records / all customer records,10.749185667752444,%,Historical reference; not a target
+Estimated total revenue growth,All methods,Week 5 to week 6,Recorded plus estimated missing amounts,-33.74097909922283,%,Historical reference; not a target
+Estimated total revenue growth,All methods,Week 1 to week 6,Recorded plus estimated missing amounts,-35.58086273394502,%,Historical reference; not a target
+Customer-count growth,All methods,Week 5 to week 6,All customer records,-52.292152292152295,%,Historical reference; not a target
+Customer-count growth,All methods,Week 1 to week 6,All customer records,-66.99811878527278,%,Historical reference; not a target
+Observed mean revenue growth,All methods,Week 5 to week 6,Customers with recorded revenue,38.24781601835801,%,Historical reference; not a target
+Observed mean revenue growth,All methods,Week 1 to week 6,Customers with recorded revenue,90.76992882191436,%,Historical reference; not a target
+Estimated mean revenue growth,All methods,Week 5 to week 6,All customers; includes estimated revenue,38.884950976058974,%,Historical reference; not a target
+Estimated mean revenue growth,All methods,Week 1 to week 6,All customers; includes estimated revenue,95.19837928908028,%,Historical reference; not a target
